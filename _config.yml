@@ -7,7 +7,7 @@
 # Setup
 title:               Galaxy's World
 tagline:             '银河雪尘'
-description:         'My Blog with <a href="http://jekyllrb.com" target="_blank">Jekyll</a>. Written by <a href="https://twitter.com/galaxy001" target="_blank">@galaxy001</a>.'
+description:         'My Blog with <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.<br>Written by <a href="https://twitter.com/galaxy001" target="_blank">@galaxy001</a>.'
 url:                 https://galaxysd.github.io
 baseurl:             ''
 paginate:            5
