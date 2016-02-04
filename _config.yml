@@ -1,22 +1,22 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
+#permalink:           pretty
 #relative_permalinks: true	# https://help.github.com/articles/removing-relative-permalinks
 
 # Setup
-title:               Lanyon
-tagline:             'A Jekyll theme'
-description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:                 http://lanyon.getpoole.com
+title:               Galaxy's World
+tagline:             '银河雪尘'
+description:         'My Blog with <a href="http://jekyllrb.com" target="_blank">Jekyll</a>. Written by <a href="https://twitter.com/galaxy001" target="_blank">@galaxy001</a>.'
+url:                 https://galaxysd.github.io
 baseurl:             ''
 paginate:            5
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Yuuki Galaxy
+  url:               https://twitter.com/galaxy001
+  email:             galaxy001(at)gmail.com
 
 # Custom vars
 version:             1.0.0
@@ -41,3 +41,9 @@ gist:
 
 # Doc
 # https://github.com/blog/2100-github-pages-jekyll-3
+markdown: kramdown
+
+# added by Galaxy
+exclude: ["README.md", "Rakefile"]
+permalink: /:categories/:year:month:day/:title
+timezone: Asia/Hong_Kong
