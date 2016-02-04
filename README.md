@@ -1,3 +1,18 @@
+# Galaxy's Blog Ver. 2
+
+Since Jekyll-Bootstrap [announced](http://jekyllbootstrap.com/) as "I don't regularly contribute to JB anymore", I have to find another blogging system.
+
+As I favor the render-on-the-fly concept of Jekyll, the choice is limited.
+
+[Hyde](https://github.com/poole/hyde) is find first and I came to [Poole](http://getpoole.com/).  
+Soon after, I choose [Lanyon](http://lanyon.getpoole.com/) as the floating sidebar hits me.
+
+In fact ,even [Lanyon](https://github.com/poole/lanyon) is not so active now. The last meaningful commit on code is on [Apr 20, 2015](https://github.com/poole/lanyon/pull/103), which is about one year ago.
+
+Accroding to GitHub: `Sorry, forked repositories are not currently searchable.`, thus no more fork. Let's *de novo* !
+
+------
+
 # Lanyon
 
 Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
