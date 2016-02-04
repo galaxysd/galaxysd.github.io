@@ -20,3 +20,24 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+# https://help.github.com/articles/using-jekyll-with-pages/#configuring-jekyll
+## Changeable
+kramdown:
+  input: GFM
+  hard_wrap: false
+gems:
+   - jekyll-coffeescript
+   - jekyll-paginate
+
+## Constant
+lsi: false
+safe: true
+#source: [your repo's top level directory]
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+
+# Doc
+# https://github.com/blog/2100-github-pages-jekyll-3
