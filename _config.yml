@@ -47,6 +47,7 @@ markdown: kramdown
 exclude: ["README.md", "Rakefile"]
 permalink: /:categories/:year:month:day/:title
 timezone: Asia/Hong_Kong
+excerpt_separator: <!--more-->
 
 # Optional features
 google_analytics_id: UA-73337682-1
