@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title></title>
+      <style>
+         #playerbox { width:1280; height:750; margin-bottom:10px; }
+         #status { width:1280px; height:3em; margin-bottom:10px; }
+      </style>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script>
+         $(function(){
+			var player,timer;
+			var videoID="7OV0LdBFhEU";
+			var offset=0;
+			var lyrics_count=0;
+			var lyrics = [];
+			var lyrics = [ 
+
+				0,	"「Glimmer」", 
+				2000,	"",
+
+				2100,	"魂は逃れられない運命の束縛に囚われ",
+				2420,	"",
+				2440,	"四散した空虚な瞳は冷酷と隔たりを作り上げた",
+				2740,	"",
+				2760,	"時代は一体誰が仕掛けた因果によって動いているのだろうか",
+				3040,	"",
+				3060,	"まだ鋭利なその輪郭　目を逸らさずに受け止めて",
+				3380,	"",
+				3400,	"再構築された自我は　是と非を捻じ曲げ",
+				3720,	"",
+				3740,	"星々は微かな煌きを残して燃え尽きていった",
+				4060,	"",
+				4080,	"僅かに静止した時間のなかで　呑み込むのか、或いは生き残るのか",
+				4380,	"",
+				4400,	"恐れることなく切り抜けろ",
+				4640,	"",
+				4700,	"熱を帯びる信念を拭い　苦痛を伴いながらも　時間の障壁を乗り越え",
+				5060,	"",
+				5080,	"押し殺していた感情　この瞬間思いのままに解き放て",
+				5340,	"",
+				5360,	"ふり返るにも値しない　脆弱だったかつての自分の姿など捨て去り",
+				5700,	"",
+				5720,	"手のひらに余韻が残る夢は　まだ掴むことが出来るのだろうか",
+				5980,	"",
+				6000,	"まだ見ぬかなたで　忘れられていた夜明けの光を灯しているのは誰？",
+				6600,	"",
+				6620,	"道端に散り落ちた誇りを拾い集め",
+				6920,	"",
+				6940,	"希望を紡ぎだしてゆく",
+
+				7450,	"",
+
+,
+				1000000,	"", 
+
+			];
+			var lyrics_count_end = lyrics.length / 2;
+
+            function fGetScript(){
+               $.ajax({
+                  url:"http://www.youtube.com/player_api/",
+                  dataType:"script",
+                  success:function(data){
+                  },
+                  error:function(xhr, status, thrown) {
+                     dbg(xhr);
+                     fGetScript();
+                  }
+               }); 
+            }
+            fGetScript();
+
+            window.onYouTubeIframeAPIReady=function() {
+               loadPlayer(videoID);
+            }
+            function loadPlayer(videoID) {
+               if(!player){
+                  player = new YT.Player(
+                     'player',{
+                        width: '1280',
+                        height: '750', 
+                        videoId: videoID,  
+                        events: { 
+                           "onReady": onPlayerReady,
+                        },
+                        playerVars: {
+                           "rel":0,
+                           "showinfo":1,
+                           "controls":1,
+                           "iv_load_policy":3 
+
+                        }
+                     }
+                  );
+               }else{
+                  player.loadVideoById(videoID);
+               }
+            }
+            function onPlayerReady(event){
+               timer = setInterval(getStatus, 100);
+			   event.target.setPlaybackQuality('hd720');
+            }
+            var getStatus=function(){
+				var current_time=player.getCurrentTime()*100+offset;
+
+				if(current_time < lyrics[lyrics_count*2]) {
+					lyrics_count=0;
+				}
+
+				while(current_time > lyrics[lyrics_count*2+2] && lyrics_count<lyrics_count_end) {
+					lyrics_count++;
+				}
+
+
+				$("#status").html(lyrics[lyrics_count*2+1]);
+//				$("#time").html(Math.round(current_time));
+
+            }
+         });
+      </script>
+   </head>
+   <body>
+
+
+      <div id="wrap">
+		<table border=0 cellspacing=0 ><tr><TD colspan=0>
+         <div id="playerbox"><div id='player'></div></div>
+
+         <center><div id="status"></div></center>
+		</TD></tr>
+		</table>
+      </div>
+   </body>
+</html>
+
