@@ -14,6 +14,11 @@
 		{% endif %}
 	</title>
 
+	<!-- canonical link -->
+	{% if page.url and site.baseurl %}
+	<link rel="canonical" href="{{ site.baseurl }}{{ page.url }}">
+	{% endif %}
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/public/css/syntax.css">
