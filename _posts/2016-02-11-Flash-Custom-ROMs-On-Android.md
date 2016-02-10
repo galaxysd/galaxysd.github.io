@@ -69,6 +69,8 @@ If you don't follow this step, you will have to repeat the install.
 > Show the Menu in the Stock Recovery Screen
 > 1. Hold the Power button and keep holding as you press the Volume Up button quickly. The blue recovery menu screen should pop up.
 
+## Flash a Custom ROM zip
 
-
-
+````bash
+adb sideload MK51.1-grouper-160203-RELEASE.zip
+````
