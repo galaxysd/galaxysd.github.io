@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 'Wed 2016-02-03 14:09:06 +0800'
-slug: "on-dropbox"
-title: "On Dropbox"
+date: 'Wed 2016-02-11 02:09:06 +0800'
+slug: "Flash-Custom-ROMs-On-Android"
+title: "Flash Custom ROMs on Android"
 description: ""
 category: 
 tags: Galaxy, Tips
