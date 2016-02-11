@@ -38,6 +38,9 @@ adb reboot bootloader
 fastboot oem unlock
 ````
 
+Then operate on your device like this photo:  
+![](/assets/images/2016/IMG_5848.jpg)
+
 ## Flash New Bootloader/Recovery
 
 `adb reboot bootloader`
@@ -58,15 +61,18 @@ If you don't follow this step, you will have to repeat the install.
 > USEFUL INFORMATION
 > 
 > How to get into your FastBoot Mode
+> 
 > 1. Turn your phone off
 > 2. Unplug your usb cable if you have one plugged in
 > 3. Keep holding the 'Volume Down' and 'Power' buttons to boot the phone into FastBoot Mode
 > 
 > How to get into Recovery
+> 
 > 1. First boot into FastBoot Mode as described above
 > 2. Scroll down with the 'Volume Down' button until it says 'Recovery mode' at the top and press the 'Power' button to enter Recovery
 > 
 > Show the Menu in the Stock Recovery Screen
+> 
 > 1. Hold the Power button and keep holding as you press the Volume Up button quickly. The blue recovery menu screen should pop up.
 
 ## Flash a Custom ROM zip
