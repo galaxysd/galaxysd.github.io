@@ -84,7 +84,7 @@ If you don't follow this step, you will have to repeat the install.
 > E: signature verification failed  
 > installation aborted.
 
-Thanks to the [Harley Santana](http://forum.cyanogenmod.org/topic/38799-e-failed-to-verify-whole-file-signature-rom-manager/), who types the whole thing out so that I can Google and copy-paste it.
+Thanks to [Harley Santana](http://forum.cyanogenmod.org/topic/38799-e-failed-to-verify-whole-file-signature-rom-manager/), who types the whole thing out so that I can Google and copy-paste it.
 
 Also, photos:  
 ![](/assets/images/2016/IMG_5850.jpg)  
@@ -105,7 +105,7 @@ After a *factory reset*, everything goes:
 
 ## After
 
-Yes, it is flashing through wire, which is the offical or production way comparing to flashing from SD card.  
+Yes, it is flashing through wire (fastboot), which should be the offical or production way comparing to flashing from microSD card.  
 In fact the *Nexus 7* does not support SD card and an USB OTG(On-The-Go) flash drive is not so convient to find.  
 So, I prefer flashing through wire as long as I am in the Unix world so that `adb` undoubtably works over USB.
 
