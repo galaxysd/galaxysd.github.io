@@ -111,10 +111,12 @@ So, I prefer flashing through wire as long as I am in the Unix world so that `ad
 
 Also, as I am pinned to iOS as the only smart device system since Google has been blocked out of China, I am not familiar to *andriod* ever since version *2.1*. Of cause I played around this *Nexus 7* on *Mokee 5.1.1*.
 
-I still feels the UI a bit, er, stiff, when I click the virtual *Home* button from *NetEase Cloud Music*. This is a bit strange since the top-class device came out just 3 years ago.
+I still feels the UI a bit, er, stiff, when I click the virtual *Home* button from *NetEase Cloud Music*. This is a bit strange since it is a top-class device came out just 3 years ago.  
+Er, I just find the 2012 version is the first one in [Google Nexus tablets](https://en.wikipedia.org/wiki/Comparison_of_Google_Nexus_tablets).  
+The one I tried has 1GB memory and 16GB storage.
 
 Another finding is that I finally knows how this overlay running processes list comes as "show CPU load":  
 ![](/assets/images/2016/IMG_5855.jpg)  
-In fact I have asked on Twitter to those post screenshot with processes list and got no reply.
+In fact I have asked on Twitter to those who post screenshot with processes list and got no reply.
 
-Finally, I just come to [an offical guide](http://forum.xda-developers.com/wiki/Flashing_Guide_-_Android).
+Finally, I just come to [an offical Flashing guide](http://forum.xda-developers.com/wiki/Flashing_Guide_-_Android).
