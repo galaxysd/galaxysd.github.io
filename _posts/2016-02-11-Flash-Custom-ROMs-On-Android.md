@@ -75,6 +75,21 @@ If you don't follow this step, you will have to repeat the install.
 > 
 > 1. Hold the Power button and keep holding as you press the Volume Up button quickly. The blue recovery menu screen should pop up.
 
+### What if you flash with the original ASUS bootloader ?
+
+> Finding update package ...
+> Opening update package ...
+> Verifiyng update package ...
+> E: failed to verify whole-file signature
+> E: signature verification failed
+> installation aborted.
+
+Thanks to the [Harley Santana](http://forum.cyanogenmod.org/topic/38799-e-failed-to-verify-whole-file-signature-rom-manager/), who types the whole thing out so that I can Google and copy-paste it.
+
+Also, photos:  
+![](/assets/images/2016/IMG_5850.jpg)  
+![](/assets/images/2016/IMG_5851.jpg)
+
 ## Flash a Custom ROM zip
 
 ````bash
