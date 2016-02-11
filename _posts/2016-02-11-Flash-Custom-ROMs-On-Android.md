@@ -95,3 +95,19 @@ Also, photos:
 ````bash
 adb sideload MK51.1-grouper-160203-RELEASE.zip
 ````
+
+If you have booted up to normal system once after `fastboot oem unlock`, you have to repeat a *factory reset*. Or, there will be a prompt for you as:  
+![](/assets/images/2016/IMG_5852.jpg)  
+![](/assets/images/2016/IMG_5853.jpg)
+
+After a *factory reset*, everything goes:  
+![](/assets/images/2016/IMG_5854.jpg)
+
+## After
+
+Yes, it is flashing through wire, which is the offical or production way comparing to flashing from SD card.  
+In fact the *Nexus 7* does not support SD card and an USB OTG(On-The-Go) flash drive is not so convient to find.  
+So, I prefer flashing through wire as long as I am in the Unix world so that `adb` undoubtably works over USB.
+
+Also, as I am pinned to iOS as the only smart device system since Google has been blocked out of China, I am not familiar to *andriod* ever since version *2.1*. Of cause I played around this *Nexus 7* on *andriod 4.1* and *Mokee 5.1.1*.
+
