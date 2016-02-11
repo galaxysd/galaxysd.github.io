@@ -82,7 +82,7 @@ If you don't follow this step, you will have to repeat the install.
 > Verifiyng update package ...  
 > E: failed to verify whole-file signature  
 > E: signature verification failed  
-> installation aborted.
+> Installation aborted.
 
 Thanks to [Harley Santana](http://forum.cyanogenmod.org/topic/38799-e-failed-to-verify-whole-file-signature-rom-manager/), who types the whole thing out so that I can Google and copy-paste it.
 
