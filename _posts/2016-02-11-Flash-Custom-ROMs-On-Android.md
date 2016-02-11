@@ -116,3 +116,5 @@ I still feels the UI a bit, er, stiff, when I click the virtual *Home* button fr
 Another finding is that I finally knows how this overlay running processes list comes as "show CPU load":  
 ![](/assets/images/2016/IMG_5855.jpg)  
 In fact I have asked on Twitter to those post screenshot with processes list and got no reply.
+
+Finally, I just come to [an offical guide](http://forum.xda-developers.com/wiki/Flashing_Guide_-_Android).
