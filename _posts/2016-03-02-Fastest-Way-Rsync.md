@@ -12,6 +12,7 @@ tags: Galaxy, Tips
 
  * [Rsync over SSH - (40MB/s over 1GB NICs)](https://gist.github.com/KartikTalwar/4393116)
  * [OpenSSH ciphers performance benchmark](http://blog.famzah.net/2010/06/11/openssh-ciphers-performance-benchmark/)
+ * [The best way to move data - Linuxaria](http://linuxaria.com/article/tar-rsync-netcat-scp)
 
 ## CLI
 
