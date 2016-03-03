@@ -12,7 +12,7 @@ tags: ZT, Python, RTF, Unicode, encoding
 特转载。  
 途中发现是*Jekyll*风，就搜了下源码，遂[得](https://github.com/mjpieters/mjpieters.github.com)[之](https://github.com/mjpieters/mjpieters.github.com/blob/master/_posts/2012-06-06-rtf-and-unicode.md)。
 
-话说，他那个`%7b{page.description}%7d`用得挺别致的。
+话说，他那个`{ {page.description} }`用得挺别致的。
 
 咱自己当然还是关键词get后用*Perl*解决的。
 
