@@ -90,9 +90,19 @@ So people write [this](http://unix.stackexchange.com/questions/111895/copy-mbr-a
 
 ### AutoUnattend.xml
 
-Accroding to [TechNet](https://technet.microsoft.com/en-us/library/cc749415(v=ws.10).aspx), `X:\Unattend.xml` or `X:\Autounattend.xml` will be used by Windows Setup.
+Accroding to [TechNet](https://technet.microsoft.com/en-us/library/cc749415(v=ws.10\).aspx), `X:\Unattend.xml` or `X:\Autounattend.xml` will be used for Unattended Windows Setup.
 
+Search Order | Location | Description
+:--- | :--- | :---
+1 | Registry `HKLM\System\Setup!UnattendFile` | Specifies a pointer in the registry to an answer file. The answer file is not required to be named Unattend.xml.
+2 | `%WINDIR%\Panther\Unattend` | The name of the answer file **must be** Unattend.xml or Autounattend.xml. | Note   Windows Setup only searches this directory on downlevel installations. If Windows Setup starts from Windows PE, the %WINDIR%\Panther\Unattend directory is not searched.
+3 | `%WINDIR%\Panther` | Windows Setup caches answer files to this location.<br>_Important:_ **Do not overwrite the answer files in these directories.**
+4* | Removable read/write media in order of drive letter, at the root of the drive. | The name of the answer file **must be** `Unattend.xml` or `Autounattend.xml`, and the answer file **must be** located at the root of the drive.
+5* | Removable read-only media in order of drive letter, at the root of the drive. | The name of the answer file **must be** `Unattend.xml` or `Autounattend.xml`, and **must be** located at the root of the drive.
+6 | windowsPE and offlineServicing passes: `\Sources` directory in a Windows distribution;<br>All other passes: `%WINDIR%\System32\Sysprep` | In the windowsPE and offlineServicing passes, the name of the answer file **must be** Autounattend.xml. _For all other configuration passes, the file name **must be** Unattend.xml._
+7 | `%SYSTEMDRIVE%` | The answer file name **must be** Unattend.xml or Autounattend.xml
 
+\* The name of the answer file must be Unattend.xml or Autounattend.xml, and must be located at the root of the drive.
 
 ## Other unused methods
 
