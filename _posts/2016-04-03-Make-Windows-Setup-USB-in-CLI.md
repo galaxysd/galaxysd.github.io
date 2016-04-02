@@ -159,6 +159,7 @@ Note that an ‘r’ signifier is placed in front of the disk identifier, this m
 
 ## etc
 
+* <http://seafre.co.uk/blog/2015/05/guide-windows-to-go-10-install-via-cmd/>
 * <http://superuser.com/questions/581972/how-to-restore-windows-7-boot-sector-from-linux>
 * <http://userpages.uni-koblenz.de/~krienke/ftp/noarch/geteltorito/>
 * a demo [Windows Server 2012 R2 Autounattend.xml](https://gist.github.com/sneal/a1ef4e9d5c2f86f8580b):
