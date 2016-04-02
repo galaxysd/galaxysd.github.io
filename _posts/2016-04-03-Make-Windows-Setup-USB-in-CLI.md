@@ -2,7 +2,7 @@
 layout: post
 date: 'Wed 2016-04-03 00:22:06 +0800'
 slug: "Make-Windows-Setup-USB-in-CLI"
-title: Make indows Setup USB in CLI
+title: Make Windows Setup USB in CLI
 description: 
 category: 
 tags: Galaxy_Original, Tips
