@@ -104,6 +104,43 @@ Search Order | Location | Description
 
 \* The name of the answer file must be Unattend.xml or Autounattend.xml, and must be located at the root of the drive.
 
+### Driver injection with `$WinPeDriver$`
+
+Accroding to [KB2686316](https://support.microsoft.com/en-us/kb/2686316):
+
+Consider the following scenario: you are creating a custom Windows Pre-installation Environment (WinPE) image for the purposes of installing Windows operating systems that needs an out-of-box storage controller driver prior to running Setup.exe in order to manipulate the disks.  Additionally, you want to provide “up-to-date” drivers for inclusion via the `\$WinPEDriver$` folder feature of Setup, to include later versions of the same driver.
+
+The $WinPEDriver$ feature is intended as a method to provide drivers at installation time.  However, it is a feature of Setup.exe, and as such is not invoked until after Setup.exe launches.  Drivers for present devices which are injected manually into the WinPE boot.wim driverstore using DISM are loaded into memory at boot time.  These two mechanisms are separate, and there are some caveats to using them together.   
+
+WinPE does not have a built in mechanism to unload drivers which have been loaded into memory, so any drivers for devices which have already been loaded will not be reloaded once setup.exe starts, as there are already drivers for the device loaded. This error will cause Setup to mark the driver in the $WinPEDriver$ folder as a bad driver, even if it is newer than the driver version injected into WinPE and would otherwise outrank it. Setup has no explicit knowledge of drivers that have been loaded into the boot.wim.
+
+This behavior is by design; however this article will identify a method of accommodating this scenario so these drivers can still be included in the deployable operating system.
+
+In this document we are going to be highlighting methods for injecting drivers and launching windows.
+
+#### The following chart briefly depicts methods and results of including drivers.
+
+WinPE (in-box native or injected) | (out-box drivers in $WinPEDriver$) | Result (Post OS)
+:--- | :--- | :---
+If WinPE contains driver version X1 injected via Dism.exe | contains X2 version of driver with same driver name | X1 will be carried in post OS installation and X2 will be ignored
+If WinPE installs driver X2 using Drvload.exe from `\$WinPEDriver$` | contains X2 version of driver with same driver name | X2 will be carried in post OS installation
+if WinPE contains driver X1 which is not boot-critical (in-box native) | contains no driver | Will use in-box native driver X1. No out of box driver will be available for that device post OS installation
+
+#### Methods for adding drivers to Windows:
+
+* Dism.exe
+ 1. Dism /get-wiminfo /wimfile:_pathto_Install.wim 
+ 2. Dism /mount-wim /wimfile:_pathto_Install.wim /index:n /mountdir:_pathto_mount
+ 3. Dism /add-driver [and conversely /remove-driver] /image:_pathto_mount /driverpath:_pathto_driverINF
+ 4. Dism /unmounts-wim /commit /mountdir:_pathto_mount
+* \$WinPEDriver$
+* Running a script during unattended installation
+ 1. unattend.xml (driverstore) in WinPE and Audit Mode (more information is in the References and Links section).
+ 2. Setupcomplete.cmd ‘can’ be used for driver injection, but is strongly advised against as it is a poor user experience and can cause delays in booting to the desktop for the first time.
+* Drvload.exe
+ 1. Only injects drivers into the currently running OS, which in the case of WinPE is typically RAM disk.
+ 2. Drvload _pathto_.INF (can be scripted in startnet.cmd (see [examples](https://support.microsoft.com/en-us/kb/2686316)))
+
 ## Other unused methods
 
 * [How to Copy an ISO to a USB Drive from Mac OS X with dd](http://osxdaily.com/2015/06/05/copy-iso-to-usb-drive-mac-os-x-command/)
