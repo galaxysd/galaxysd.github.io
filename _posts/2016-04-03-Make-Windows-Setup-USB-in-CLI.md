@@ -60,7 +60,7 @@ rsync -ah --progress --stats /Volumes/Boot\ Camp/ /Volumes/WININSTALL/
 
 ### Set Boot Order
 
-Accroding to [Set Boot Camp partition to boot to Windows via command line](http://hints.macworld.com/article.php?story=20110601220925705)
+According to [Set Boot Camp partition to boot to Windows via command line](http://hints.macworld.com/article.php?story=20110601220925705)
 
 ````bash
 /usr/sbin/bless --device /dev/disk0s3 --setBoot --legacy --nextonly 
@@ -90,7 +90,7 @@ So people write [this](http://unix.stackexchange.com/questions/111895/copy-mbr-a
 
 ### AutoUnattend.xml
 
-Accroding to [TechNet](https://technet.microsoft.com/en-us/library/cc749415(v=ws.10\).aspx), `X:\Unattend.xml` or `X:\Autounattend.xml` will be used for Unattended Windows Setup.
+According to [TechNet](https://technet.microsoft.com/en-us/library/cc749415(v=ws.10\).aspx), `X:\Unattend.xml` or `X:\Autounattend.xml` will be used for Unattended Windows Setup.
 
 Search Order | Location | Description
 :--- | :--- | :---
@@ -106,7 +106,7 @@ Search Order | Location | Description
 
 ### Driver injection with `$WinPeDriver$`
 
-Accroding to [KB2686316](https://support.microsoft.com/en-us/kb/2686316):
+According to [KB2686316](https://support.microsoft.com/en-us/kb/2686316):
 
 Consider the following scenario: you are creating a custom Windows Pre-installation Environment (WinPE) image for the purposes of installing Windows operating systems that needs an out-of-box storage controller driver prior to running Setup.exe in order to manipulate the disks.  Additionally, you want to provide “up-to-date” drivers for inclusion via the `\$WinPEDriver$` folder feature of Setup, to include later versions of the same driver.
 
