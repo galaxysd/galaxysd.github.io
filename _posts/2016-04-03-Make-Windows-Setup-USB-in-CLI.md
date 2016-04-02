@@ -12,11 +12,11 @@ tags: Galaxy_Original, Tips
 
 ## Steps
 
-### Starts with new USB stricks
+### Starts with a new USB Flash Device (UFD)
 
-* Use “Boot Camp Assistant” to format the USB. It is fine to stop its 1st creation step after it starts copy Windows files from ISO.
+* Use “Boot Camp Assistant” to format the UFD. It is fine to stop its 1st creation step after it starts copy Windows files from ISO.
  - Or, you can follow this:
-	 * Prepair the USB stick with a MBR partition that larger than your ISO.
+	 * Prepair the UFD with a MBR partition that larger than your ISO.
 
 ````bash
 sudo dd of=/dev/disk3 if=/Applications/Utilities/Boot\ Camp\ Assistant.app/Contents/Resources/applembr.bin bs=440 count=1
