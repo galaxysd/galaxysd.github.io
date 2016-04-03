@@ -229,7 +229,7 @@ but beware not to run out of ram as before, cause WinPE doesnt have anywhere els
 
 also - if a driver fails to inject in boot.wim with dism tool (as in previous method) the setup WILL fail if you put it in $WinPEDriver$ folder, so i suggest that you test all the drivers with dism FIRST (you can see the failed ones in C:\Windows\Logs\DISM\dism.log file) and move the bad ones to dvd:\sources\$OEM$\$$\Inf\D folder (as in previous method)
 
-winpe supports cabbed drivers - but i had to expand some to work with dism (only 2 or 3 out of ALL the available driverpacks, but just one can f*ck you up)
+winpe supports cabbed drivers - but i had to expand some to work with dism (only 2 or 3 out of ALL the available driverpacks, but just one can fuck you up)
 
 ##### METHOD 3 (too large):
 
