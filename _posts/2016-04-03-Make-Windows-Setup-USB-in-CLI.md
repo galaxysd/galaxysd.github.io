@@ -95,7 +95,7 @@ According to [TechNet](https://technet.microsoft.com/en-us/library/cc749415(v=ws
 Search Order | Location | Description
 :--- | :--- | :---
 1 | Registry `HKLM\System\Setup!UnattendFile` | Specifies a pointer in the registry to an answer file. The answer file is not required to be named Unattend.xml.
-2 | `%WINDIR%\Panther\Unattend` | The name of the answer file **must be** Unattend.xml or Autounattend.xml. | Note   Windows Setup only searches this directory on downlevel installations. If Windows Setup starts from Windows PE, the %WINDIR%\Panther\Unattend directory is not searched.
+2 | `%WINDIR%\Panther\Unattend` | The name of the answer file **must be** Unattend.xml or Autounattend.xml.<br>_Note:_ Windows Setup only searches this directory on downlevel installations. If Windows Setup starts from Windows PE, the `%WINDIR%\Panther\Unattend` directory is not searched.
 3 | `%WINDIR%\Panther` | Windows Setup caches answer files to this location.<br>_Important:_ **Do not overwrite the answer files in these directories.**
 4* | Removable read/write media in order of drive letter, at the root of the drive. | The name of the answer file **must be** `Unattend.xml` or `Autounattend.xml`, and the answer file **must be** located at the root of the drive.
 5* | Removable read-only media in order of drive letter, at the root of the drive. | The name of the answer file **must be** `Unattend.xml` or `Autounattend.xml`, and **must be** located at the root of the drive.
