@@ -15,7 +15,7 @@ tags: Galaxy_Original, Tips
 ### Starts with a new USB Flash Device (UFD)
 
 * Use “Boot Camp Assistant” to format the UFD. It is fine to stop its 1st creation step after it starts copy Windows files from ISO.
- - Or, you can follow this:
+  - Or, you can follow this:
 	 * Prepair the UFD with a MBR partition that larger than your ISO.
 
 ````bash
@@ -32,7 +32,7 @@ bootsect /nt60 E:
 ````
 
 * Use "[Brigadier](https://github.com/timsutton/brigadier)" to download Boot Camp ESD ("Electronic Software Distribution")
- - Untill 2016-04, there are 4 BootCampESD.pkg for Intel-based Macs
+  - Untill 2016-04, there are 4 BootCampESD.pkg for Intel-based Macs
 	 * 031-11269: PostDate 2015-02-09 18:42:38
 		 - For MacBook2,1, MacBook3,1, MacBook4,1, MacBook5,1, MacBook5,2, MacBook5,3, MacBook6,1, MacBook7,1, MacBookAir1,1, MacBookAir2,1, MacBookAir3,1, MacBookAir3,2, MacBookPro2,1, MacBookPro2,2, MacBookPro3,1, MacBookPro4,1, MacBookPro5,1, MacBookPro5,2, MacBookPro5,3, MacBookPro5,4, MacBookPro5,5, _MacBookPro6,1, MacBookPro6,2, MacBookPro7,1, MacBookPro8,1, MacBookPro8,2, MacBookPro8,3,_ MacPro1,1, MacPro2,1, MacPro3,1, _MacPro4,1, MacPro5,1,_ Macmini2,1, Macmini3,1, Macmini4,1, iMac5,1, iMac6,1, iMac7,1, iMac8,1, iMac9,1, iMac11,1, iMac11,2, _iMac11,3, iMac12,1, iMac12,2_.
 		 - URL <http://swcdn.apple.com/content/downloads/41/25/031-11269/hpi4khg5mrvy75pcamao1thdrwm3qetgk0/BootCampESD.pkg>.
@@ -47,7 +47,7 @@ bootsect /nt60 E:
  * The Python script use temp dir like: `/var/folders/yt/vz1gkrnd0h9gmpc5p5pggrfr0000gn/T/bootcamp-unpack_*/`.
 
 * Query [MSDN](https://msdn.microsoft.com/subscriptions/securedownloads/#searchTerm=&ProductFamilyId=636&Languages=en&Architectures=x64&PageSize=10&PageIndex=0&FileId=0) for ISO file names and their SHA1 hashes, Google for downloading.
- - One place I find useful is [Windows ISO Download – #1 Windows ISO mirror](http://windowsiso.net/windows-10-iso/windows-10-th2-u1-download-build-10586-104/windows-10-th2-u1-iso-download-standard/).
+  - One place I find useful is [Windows ISO Download – #1 Windows ISO mirror](http://windowsiso.net/windows-10-iso/windows-10-th2-u1-download-build-10586-104/windows-10-th2-u1-iso-download-standard/).
 
 ### Update to another Windows ISO
 
@@ -152,6 +152,14 @@ Search Order | Location | Description
 
 According to [KB2686316](https://support.microsoft.com/en-us/kb/2686316):
 
+#### Summary
+
+When adding a driver into installation media, do not mix versions. Use the same version of each driver throughout the media.
+
+There are several different methods for including out-of-box drivers into Winpe (boot.wim) and the target installing operating system (install.wim). If the driver versions do not match, the first driver loaded into memory will be used regardless of PNP ranking rules. Other versions may be marked as ‘Bad’ drivers which will prevent these drivers from being selected by PNP at a later time. Thisincludes any driver loaded into memory during the boot to WinPE (Winpe phase) of installation. Examples could include injecting drivers into boot.wim via DISM.exe or loading a driver using Drvload.exe to manually load the driver.
+
+#### Introduction
+
 Consider the following scenario: you are creating a custom Windows Pre-installation Environment (WinPE) image for the purposes of installing Windows operating systems that needs an out-of-box storage controller driver prior to running Setup.exe in order to manipulate the disks.  Additionally, you want to provide “up-to-date” drivers for inclusion via the `\$WinPEDriver$` folder feature of Setup, to include later versions of the same driver.
 
 The $WinPEDriver$ feature is intended as a method to provide drivers at installation time.  However, it is a feature of Setup.exe, and as such is not invoked until after Setup.exe launches.  Drivers for present devices which are injected manually into the WinPE boot.wim driverstore using DISM are loaded into memory at boot time.  These two mechanisms are separate, and there are some caveats to using them together.   
@@ -184,6 +192,57 @@ if WinPE contains driver X1 which is not boot-critical (in-box native) | contain
 * Drvload.exe
  1. Only injects drivers into the currently running OS, which in the case of WinPE is typically RAM disk.
  2. Drvload _pathto_.INF (can be scripted in startnet.cmd (see [examples](https://support.microsoft.com/en-us/kb/2686316)))
+
+#### Manual integration and installation question from [driverpacks.net](http://forum.driverpacks.net/viewtopic.php?id=4725)
+
+##### METHOD 1 (too long):
+
+first, you HAVE to dism mass storage drivers (and lan - if you enabled network for pe in answer file) into boot.wim (2nd index only needed for setup) cause it runs completely from memory and copies nothing to hdd (and dvd drive could be ANY letter at this point) - it is equivalent to integrating them in I386 folder as before for xp
+
+but know that the injected drivers are automaticaly expanded within image, and multiple copies of them are kept separately if there are more than one .inf files per folder (or multiple entries in a single *.inf), so integrate only boot critical drivers this way (chipset, storage and lan) or your image may not fit on a dvd - and you can actualy run out of ram when booting from it
+
+* mount image (must be writable, so copy to hdd first):
+
+	`Dism /Mount-Wim /WimFile:C:\test\boot.wim /Index:2 /MountDir:C:\test\offline`
+
+* remove old drivers (skip if this is the first time):
+
+	`Dism /Image:C:\test\offline /Remove-Driver /Driver:OEM1.inf /Driver:OEM2.inf ...  /Driver:OEM99.inf`
+
+  - how ever many there are third party drivers in `C:\test\offline\Windows\Inf` folder, you cant uninstall default ones
+
+* inject all the drivers from C:\D folder, including in subfolders and even unsigned ones:
+
+	`Dism /Image:C:\test\offline /Add-Driver /Driver:C:\D /Recurse /ForceUnsigned`
+
+* dismount image (and then replace boot.wim from where you got it):
+
+	`Dism /Unmount-Wim /MountDir:C:\test\offline /Commit`
+
+second, you create a `$OEM$\$$\Inf\D` folder INSIDE sources folder on install dvd/usb (not in root anymore) and add ALL the drivers there (`dvd:\sources\$OEM$\$$\Inf\D`) - they get automaticaly copied to `C:\Windows\Inf\D` folder during install (and windows already searches for drivers there on its own, including subfolders), only needed ones also get copied to windows driverstore folder, so you can safely delete `C:\Windows\Inf\D` after install if you wish
+
+##### METHOD 2 (but only for vista/2008 with any integrated service pack, or 7 and 2008 R2):
+
+at install windows automaticaly searches ALL the available drives for `$WinPEDriver$` folder (not $WinPEDriverS$) in its root, so copy only boot critical drivers there (`dvd:\$WinPEDriver$`), they can be in subfolders too and are used during the whole install
+
+but beware not to run out of ram as before, cause WinPE doesnt have anywhere else to keep its driverstore folder but memory
+
+also - if a driver fails to inject in boot.wim with dism tool (as in previous method) the setup WILL fail if you put it in $WinPEDriver$ folder, so i suggest that you test all the drivers with dism FIRST (you can see the failed ones in C:\Windows\Logs\DISM\dism.log file) and move the bad ones to dvd:\sources\$OEM$\$$\Inf\D folder (as in previous method)
+
+winpe supports cabbed drivers - but i had to expand some to work with dism (only 2 or 3 out of ALL the available driverpacks, but just one can f*ck you up)
+
+##### METHOD 3 (too large):
+
+forget everything from above and in the answer file for install.wim image, under Microsoft-Windows-Setup in WinPE pass just set UseConfigurationSet to true - now you have a system variable %configsetroot% which always points to the drive containing autounattend.xml in its root (doesnt need to be the install drive)
+
+add the `%configsetroot%\your_drivers_path` to Microsoft-Windows-PnpCustomizationWinPE as a device driver path, and they are immediately available from the very start
+
+but know that ALL the files from `%configsetroot%` drive WILL be automaticaly copied to `C:\Windows\configsetroot` folder, which can safely be deleted afterwards
+
+
+EDIT: corrected $OEM$\$$\Windows\Inf\D to $OEM$\$$\Inf\D (but $OEM$\$1\Windows\Inf\D would work too)
+
+Last edited by pOcHa (2010-10-31 12:10:48)
 
 ## Other unused methods
 
