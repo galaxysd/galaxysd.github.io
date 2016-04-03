@@ -23,7 +23,7 @@ sudo dd of=/dev/disk3 if=/Applications/Utilities/Boot\ Camp\ Assistant.app/Conte
 ````
 
 * 
- - 
+  - 
 	 * Format it as FAT32.
 	 * Boot Sector can be write under Windows. DO NOT use `/mbr` BELOW !
 
