@@ -51,13 +51,15 @@ Then I modified TokensView.prototype.updateTokens to output this info, along wit
 
 I noticed `TokensView.prototype.updateTokens` is only called after the tokens expire, so at most 30 seconds after you decrypted your data by entering your password, but eh, good enough.
 
-So, if you want to do that too, you can try to do the changes I detailed above, or just replace your `gaedmjdfmmahhbjefcbgaolhhanlaolb/js/app.js` with [my version](assets/images/2016/Authy-Chrome-app-1.3.js) (based on version 1.3 of their Chrome app), and wait between 0 and 30 seconds to see the links appear:
+So, if you want to do that too, you can try to do the changes I detailed above, or just replace your `gaedmjdfmmahhbjefcbgaolhhanlaolb/js/app.js` with [my version](/assets/images/2016/Authy-Chrome-app-1.3.js) (based on version 1.3 of their Chrome app), and wait between 0 and 30 seconds to see the links appear:
 
-![Authy-Chrome-app-with-QR-codes](assets/images/2016/Authy-Chrome-app-with-QR-codes.png)
+![Authy-Chrome-app-with-QR-codes](/assets/images/2016/Authy-Chrome-app-with-QR-codes.png)
 
 Click them one by one, scan them with your new client, and voilà! You’re ready to rock two-factor logins on your new device.
 
 Of note: CloudFlare doesn’t show a QR code in my screenshot above because it uses “Authy two-factor authentication”, which is not compatible with Google Authenticator. There’s just no point in exporting those out of Authy, since they are not usable anywhere else…
+
+附`diff -Naur old.js app.js`：
 
 ````Patch
 --- old.js
