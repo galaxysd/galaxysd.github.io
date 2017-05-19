@@ -35,7 +35,7 @@ Galaxy在路过一个[下载mod的插件](https://github.com/wisnudir/steam-exte
 
 而`924982139.mod`的内容是：
 
-````INI
+````ini
 name="Better Technology Information"
 path="workshop/content/281990/924982139/better_tech_info.zip"
 tags={
@@ -48,7 +48,7 @@ supported_version="1.6.1"
 
 Steam正版在启动游戏时，如果存在`~/Documents/Paradox\ Interactive/Stellaris/mod`，会在mod目录下自动生成`ugc_`开头的描述文件，如`ugc_924982139.mod`。其内容为：
 
-````INI
+````ini
 name="Better Technology Information"
 archive="/Applications/Games/Steam/steamapps/workshop/content/281990/924982139/better_tech_info.zip"
 tags={
@@ -71,7 +71,7 @@ supported_version="1.6.1"
 我之前模仿SKYMODS做过`ln -s /Applications/Games/Steam/steamapps/workshop/content/281990 ~/Documents/Paradox\ Interactive/Stellaris/workshop/content/`，所以执行的是`perl -pi -e 's|archive="/Applications/Games/Steam/steamapps/|path="|' *.mod`。
 得到的文件如下：
 
-````INI
+````ini
 name="Better Technology Information"
 path="workshop/content/281990/924982139/better_tech_info.zip"
 tags={
@@ -90,7 +90,7 @@ supported_version="1.6.1"
 
 `stellaris.app/Contents/Resources/activated.ini`:
 
-````INI
+````ini
 ###
 ### Game data is stored at ~/Library/Application Support/Steam/ACTiVATED/393780
 ###
@@ -157,7 +157,7 @@ DLCUnlockall=0
 
 与`Stellaris.Galaxy.Edition.v1.6.1.Incl.All.Dlcs-ALI213/Stellaris/ALI213.ini`:
 
-````INI
+````ini
 [Settings]
 #############################################
 #			模拟参数
