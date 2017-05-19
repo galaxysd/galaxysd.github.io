@@ -7,7 +7,7 @@ category: Game
 tags: Galaxy, Tips, DIY
 ---
 
-[Stellaris](https://en.wikipedia.org/wiki/Stellaris_\(video_game\))是[Paradox Interactive](http://store.steampowered.com/search/?publisher=Paradox%20Interactive)开发的策略游戏。属于[P社](https://zh.moegirl.org/Paradox_Interactive)<ruby>[四](https://www.zhihu.com/question/39732420)<rp>(</rp><rt>[五](https://www.zhihu.com/question/53613277)</rt><rp>)</rp></ruby>萌之[五](https://www.zhihu.com/question/45936905/answer/102261369)。
+[Stellaris](https://en.wikipedia.org/wiki/Stellaris_%28video_game%29)是[Paradox Interactive](http://store.steampowered.com/search/?publisher=Paradox%20Interactive)开发的策略游戏。属于[P社](https://zh.moegirl.org/Paradox_Interactive)<ruby>[四](https://www.zhihu.com/question/39732420)<rp>(</rp><rt>[五](https://www.zhihu.com/question/53613277)</rt><rp>)</rp></ruby>萌之[五](https://www.zhihu.com/question/45936905/answer/102261369)。
 
 > 额，刚发现markdown的[写法](https://talk.commonmark.org/t/proper-ruby-text-rb-syntax-support-in-markdown/2279)`P社[四]^(五)萌`还没标准化。只好直接嵌入[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby)了。
 
@@ -19,11 +19,11 @@ Galaxy在路过一个[下载mod的插件](https://github.com/wisnudir/steam-exte
 
 > Unpack mod folder in
 
->> C:\Users\\*Username*\Documents\Paradox Interactive\Stellaris\workshop\content\281990\
+>> C:\Users\\\*Username\*\Documents\Paradox Interactive\Stellaris\workshop\content\281990\
 
 > Unpack .mod file in
 
->> C:\Users\\*Username*\Documents\Paradox Interactive\Stellaris\mod
+>> C:\Users\\\*Username\*\Documents\Paradox Interactive\Stellaris\mod
 
 随便下载一个`924982139_Better_Technology_Information.zip`，发现其结构是：
 
@@ -36,7 +36,7 @@ Galaxy在路过一个[下载mod的插件](https://github.com/wisnudir/steam-exte
 而`924982139.mod`的内容是：
 
 ````INI
-ame="Better Technology Information"
+name="Better Technology Information"
 path="workshop/content/281990/924982139/better_tech_info.zip"
 tags={
 	"Utilities"
