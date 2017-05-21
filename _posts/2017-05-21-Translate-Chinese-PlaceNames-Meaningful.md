@@ -7,7 +7,7 @@ category: Study
 tags: Galaxy, Zhihu
 ---
 
-https://www.zhihu.com/question/43346815/answer/145789605
+<https://www.zhihu.com/question/43346815/answer/145789605>
 
 ## Q：如果用词根构词法意译中国的地名会有怎么样的效果？
 
@@ -117,3 +117,5 @@ Maix Yond（作者）回复谭樊马克3 个月前
 ## PS
 
 TextMate2 的 [solarized](https://github.com/textmate/textmate-solarized) 主题，把不可见字符的对比度设得太低，而写 Markdown 时为了用双空格换行，需要显示行尾的不可见字符。咱只好自己改。把`Solarized (dark)`的`invisibles = '#073642';`改成`invisibles = '#079090';`。
+
+> 话说，有种暴破时改`nop`的感觉～
