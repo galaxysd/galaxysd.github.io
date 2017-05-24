@@ -300,3 +300,127 @@ UseSavesBackup=0
 ;Redirect File Handle "ANY" to "ANY.ali213"
 ;FileRedirectCheck=1
 ````
+
+然后，咱有发现2016年的`Stellaris.MacOSX-ACTiVATED`与2017年的`Stellaris.Utopia.MacOSX-ACTiVATED`的INI文件不一样，多了好些东西：
+````ini
+###
+### Game saves are stored here:
+###
+### ~/Library/Application Support/Steam/ACTiVATED/281990/remote
+###
+### Achievements are stored here:
+###
+### ~/Library/Application Support/Steam/ACTiVATED/281990/achievements.ini
+###
+### Stats are stored here:
+###
+### ~/Library/Application Support/Steam/ACTiVATED/281990/stats.ini
+###
+
+[Settings]
+###
+### Game identifier (http://store.steampowered.com/app/281990)
+###
+AppId=281990
+###
+### Steam Account ID, set it to 0 to get a random Account ID
+###
+#AccountId=0
+###
+###
+### Name of the current player
+###
+UserName=ACTiVATED
+###
+### Language that will be used in the game
+###
+Language=english
+###
+### Enable lobby mode
+###
+LobbyEnabled=1
+###
+### Lobby port to listen on
+###
+#LobbyPort=31183
+###
+### Set Steam connection to offline mode
+###
+Offline=0
+###
+
+[Interfaces]
+###
+### Steam Client API interface versions
+###
+SteamAppList=STEAMAPPLIST_INTERFACE_VERSION001
+SteamApps=STEAMAPPS_INTERFACE_VERSION007
+SteamClient=SteamClient017
+SteamContentServer=0
+SteamController=SteamController003
+SteamFriends=SteamFriends015
+SteamGameServer=SteamGameServer012
+SteamGameServerStats=SteamGameServerStats001
+SteamHTMLSurface=STEAMHTMLSURFACE_INTERFACE_VERSION_003
+SteamHTTP=STEAMHTTP_INTERFACE_VERSION002
+SteamInventory=STEAMINVENTORY_INTERFACE_V001
+SteamMasterServerUpdater=0
+SteamMatchMaking=SteamMatchMaking009
+SteamMatchMakingServers=SteamMatchMakingServers002
+SteamMusic=STEAMMUSIC_INTERFACE_VERSION001
+SteamMusicRemote=STEAMMUSICREMOTE_INTERFACE_VERSION001
+SteamNetworking=SteamNetworking005
+SteamRemoteStorage=STEAMREMOTESTORAGE_INTERFACE_VERSION013
+SteamScreenshots=STEAMSCREENSHOTS_INTERFACE_VERSION002
+SteamUGC=STEAMUGC_INTERFACE_VERSION007
+SteamUnifiedMessages=STEAMUNIFIEDMESSAGES_INTERFACE_VERSION001
+SteamUser=SteamUser018
+SteamUserStats=STEAMUSERSTATS_INTERFACE_VERSION011
+SteamUtils=SteamUtils007
+SteamVideo=STEAMVIDEO_INTERFACE_V001
+###
+
+[DLC]
+###
+### Automatically unlock all DLCs
+###
+DLCUnlockall=0
+###
+### Identifiers for DLCs
+###
+#ID=Name
+###
+
+[AchievementIcons]
+###
+### Bitmap Icons for Achievements
+###
+#Internal Achievement Identifier Achieved=Path to Achieved Bitmap
+#Internal Achievement Identifier Unachieved=Path to Unachieved Bitmap
+#Unachieved=Path to General Unachieved Bitmap
+###
+
+[HTTP]
+###
+### Locally cached HTTP requested files
+###
+#MD5 Hash of URL=Path to File
+###
+
+[Avatar]
+###
+### Bitmap Avatar files
+###
+### 32x32 Pixel
+#Small=Path of Avatar32.bmp relative to this .ini
+###
+### 64x64 Pixel
+#Medium=Path of Avatar64.bmp relative to this .ini
+###
+### 184x184 Pixel
+#Large=Path of Avatar184.bmp relative to this .ini
+###
+````
+
+这，难道2016年的版本比2017年的功能更多？
+话说，2017年大家都把 AppId 换成 beta 版的划清界限是为了啥？
