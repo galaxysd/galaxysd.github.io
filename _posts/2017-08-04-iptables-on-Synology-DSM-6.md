@@ -243,3 +243,27 @@ In fact I was using ssh tunnel before NAT is configured as:
 
 Port Forwarding done: `iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 222 -j DNAT --to-destination 172.99.3.3:22`.
 Since I have used `MASQUERADE`, `SNAT` can be skipped for `iptables -t nat -A POSTROUTING -p tcp -s 172.99.3.3 --sport 22 -j SNAT --to-source $wan_addr`.
+
+
+
+For details on `SNAT/MASQUERADE`:
+
+Basically `SNAT` and `MASQUERADE` do the same source NAT thing in the nat table within the POSTROUTING chain.
+
+Differences
+
+- `MASQUERADE` does not require `--to-source` as it was made to work with dynamically assigned IPs
+
+- `SNAT` works only with static IPs, that's why it has `--to-source`
+
+- `MASQUERADE` has extra overhead and is slower than `SNAT` because each time `MASQUERADE` target gets hit by a packet, it has to check for the IP address to use.
+
+**NOTE**: A typical use case for `MASQUERADE`: AWS EC2 instance in a VPC, it has a private IP within the VPC CIDR (e.g. 10.10.1.0/24) - 10.10.1.100 for example, it also has a public IP so as to communicate with the Internet (assume it is in a public subnet) thru which the private IP 1:1 NAT. The public IP may change after instance reboot (if it is NOT an EIP), `MASQUERADE` is a better option in this use case.
+
+Important: It is still possible to use `MASQUERADE` target with static IP, just be aware of the extra overhead.
+
+References
+
+- [iptables Tutorial](https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html#MASQUERADETARGET)
+
+- [NAT Tutorial](http://www.karlrupp.net/en/computer/nat_tutorial)
