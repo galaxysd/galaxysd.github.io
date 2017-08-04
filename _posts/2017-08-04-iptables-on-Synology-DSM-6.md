@@ -237,3 +237,9 @@ In fact I was using ssh tunnel before NAT is configured as:
 
 * `vi /etc/ssh/sshd_config`: `#AllowTcpForwarding yes` -> `AllowTcpForwarding yes`.
 * `sudo synoservicectl --restart sshd`
+* `vi ~/.ssh/config`: add `ProxyCommand ssh -A USER@172.16.3.5 -W %h:%p` to `HostName 172.99.3.3`.
+
+---
+
+Port Forwarding done: `iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 222 -j DNAT --to-destination 172.99.3.3:22`.
+Since I have used `MASQUERADE`, `SNAT` can be skipped for `iptables -t nat -A POSTROUTING -p tcp -s 172.99.3.3 --sport 22 -j SNAT --to-source $wan_addr`.
