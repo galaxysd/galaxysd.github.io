@@ -245,8 +245,7 @@ Port Forwarding done: `iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 222 
 Since I have used `MASQUERADE`, `SNAT` can be skipped for `iptables -t nat -A POSTROUTING -p tcp -s 172.99.3.3 --sport 22 -j SNAT --to-source $wan_addr`.
 
 
-
-For details on `SNAT/MASQUERADE`:
+For [details](https://unix.stackexchange.com/a/264540/38666) on `SNAT/MASQUERADE`:
 
 Basically `SNAT` and `MASQUERADE` do the same source NAT thing in the nat table within the POSTROUTING chain.
 
