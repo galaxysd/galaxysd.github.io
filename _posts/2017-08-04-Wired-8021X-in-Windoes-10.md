@@ -1,7 +1,7 @@
 ---
 layout: post
 slug: "2017-08-04-Wired-8021X-in-Windoes-10"
-title: Enable 802.1X authentication in Windows 10
+title: "Enable 802.1X authentication in Windows 10"
 description: 
 category: Windows
 tags: Galaxy, Tips
