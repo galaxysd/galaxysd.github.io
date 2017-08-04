@@ -1,7 +1,5 @@
-#gems:
-#  - jekyll-tagging
-
 # Permalinks
+#
 # Use of `relative_permalinks` ensures post links from the index work properly.
 #permalink:           pretty
 #relative_permalinks: true	# https://help.github.com/articles/removing-relative-permalinks
@@ -50,11 +48,6 @@ exclude: ["README.md", "Rakefile"]
 permalink: /:categories/:year:month:day/:title
 timezone: Asia/Hong_Kong
 #excerpt_separator: <!--more-->
-tag_page_layout: tag_page
-tag_page_dir: tag
-#tag_permalink_style: pretty
-tag_page_data:
-  sitemap: false
 
 # Optional features
 google_analytics_id: UA-73337682-1
