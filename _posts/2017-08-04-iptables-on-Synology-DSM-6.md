@@ -267,3 +267,7 @@ References
 - [iptables Tutorial](https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html#MASQUERADETARGET)
 
 - [NAT Tutorial](http://www.karlrupp.net/en/computer/nat_tutorial)
+
+- [New iptables Gotchas](https://terrywang.net/2016/02/02/new-iptables-gotchas.html)
+
+- [Oskar wrote the excellent in-depth tutorial 10 years ago](https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html)
