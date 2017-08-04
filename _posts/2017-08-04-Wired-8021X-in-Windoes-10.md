@@ -22,6 +22,6 @@ And the authentication state remains valid after reboot to Linux setup ISO. Yes,
 
 ---
 
-BTW: Another Windows setting they Implied is the Local Windows Update Server, after they block the *offical* server with the excuse of heavy traffic. See image below as they reply me for `WUServer` and `WUStatusServe`:
+BTW: Another Windows setting they implied is the Local Windows Update Server, after they block the *offical* server with the excuse of heavy traffic. See image below as they reply me for `WUServer` and `WUStatusServe`:
 
 ![](/assets/images/2017/LocalWindowsUpdate.png)
