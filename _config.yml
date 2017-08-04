@@ -52,7 +52,7 @@ timezone: Asia/Hong_Kong
 #excerpt_separator: <!--more-->
 tag_page_layout: tag_page
 tag_page_dir: tag
-tag_permalink_style: pretty
+#tag_permalink_style: pretty
 tag_page_data:
   sitemap: false
 
