@@ -1,0 +1,11 @@
+repo_owner: galaxysd
+repo_name: galaxysd.github.io
+disabled: false
+use_show_action: false
+label_name: Post Comments
+label_color: 666666
+github_application:
+  client_id: Iv1.d2180b2a3e816b61
+  code_authenticator: https://galaxysd.herokuapp.com/authenticate/
+  callback_url: https://galaxysd.github.io/public/html/gpgc_redirect/index.html
+enable_diagnostics: false
