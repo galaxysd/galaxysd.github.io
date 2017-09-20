@@ -7,5 +7,5 @@ label_color: 666666
 github_application:
   client_id: Iv1.d2180b2a3e816b61
   code_authenticator: https://galaxysd.herokuapp.com/authenticate/
-  callback_url: https://galaxysd.github.io/public/html/gpgc_redirect/index.html
+  callback_url: https://galaxysd.github.io/public/html/gpgc_redirect
 enable_diagnostics: false
