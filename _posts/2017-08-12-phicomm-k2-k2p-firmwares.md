@@ -71,13 +71,85 @@ K1是PSG1208，K2是PSG1218。所以 **华硕hiboy固件** 对应的是PSG1208�
 
 ### K2
 
+<http://iytc.net/k2.php>
+
+<http://iytc.net/wordpress/?p=1869>
+
+<http://www.right.com.cn/forum/thread-189593-1-1.html>
 
 ### K2P
 
+<http://iytc.net/k2p.php>
 
 
+## 已有固件
 
+<http://www.right.com.cn/forum/thread-219235-1-1.html>
 
+<http://www.hopol.cn/2017/06/873/>
 
+![K2P官方固件的FLASH分区](http://www.hopol.cn/wp-content/uploads/2017/06/K2P-Flash.jpg)
 
-Since [DSM 6](https://www.synology.com/en-us/dsm/6.1), there is no longer `/usr/syno/etc.defaults/rc.d/S01iptables.sh` as mentioned in [2013](https://forum.synology.com/enu/viewtopic.php?f=39&t=62014) and [2014](https://forum.synology.com/enu/viewtopic.php?f=3&t=70083). The later thread mentioned the message, `insmod: ERROR: could not insert module /lib/modules/nf_nat.ko: Unknown symbol in module`, but till [2017](https://forum.synology.com/enu/viewtopic.php?f=3&t=70083&start=30#p490276), no one solve this problem.
+### 官方固件定制版本
+
+[abccba94@恩山无线论坛](http://www.right.com.cn/forum/home.php?mod=space&uid=140971&do=thread&view=me&from=space)
+
+<https://gitee.com/wenyinos/phicomm_k2_firmware>
+
+<http://pan.baidu.com/s/1dF7YacD>
+
+### Padavan
+
+[lintel@恩山无线论坛](http://www.right.com.cn/forum/home.php?mod=space&uid=37585&do=thread&view=me)
+
+<http://www.right.com.cn/forum/thread-161324-1-1.html>
+这固件是从Padavan固件源码:https://bitbucket.org/padavan/rt-n56u/src搬运源码汉化后编译出来的。如有需要可以到网盘下载汉化文件自行编译。
+更多高级功能教程网站：<http://rt.cn2k.net/>
+
+[华硕hiboy固件——wifidog本地认证教程](http://www.right.com.cn/forum/thread-204701-1-1.html)
+
+<https://github.com/openwrt-dev/pandorabox>
+
+### LEDE
+
+<https://lede-project.org/toh/hwdata/phicomm/phicomm_k2_psg1218>
+
+<http://www.mleaf.org/2017/06/21/k2p-lede-v1-0-0%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83/>
+
+[mleaf@恩山无线论坛](http://www.right.com.cn/forum/home.php?mod=space&uid=284724&do=thread&view=me)
+
+## BootLoader
+
+### Breed
+
+[hackpascal@恩山无线论坛](http://www.right.com.cn/forum/home.php?mod=space&uid=200302&do=thread&view=me)
+
+[Breed 更新贴](http://www.right.com.cn/forum/thread-161906-1-1.html)
+
+<http://www.right.com.cn/forum/thread-174525-1-1.html>
+
+<https://breed.hackpascal.net/>
+
+### OpBoot
+
+## 固件备份与恢复
+
+<http://www.right.com.cn/forum/thread-217088-1-1.html>
+
+````bash
+cat /proc/mtd
+dd if=/dev/mtd0 of=/tmp/all.bin
+cd /www
+touch all.bin
+mount --bind /tmp/all.bin /www/all.bin
+
+wget http://192.168.2.1/all.bin
+````
+
+````bash
+cat /proc/mtd
+mtd write /tmp/all.bin ALL
+mtd write /tmp/eeprom.bin Factory
+mtd write /tmp/fs.bin firmware
+````
+
