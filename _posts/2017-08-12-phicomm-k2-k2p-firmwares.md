@@ -81,6 +81,8 @@ K1是PSG1208，K2是PSG1218。所以 **华硕hiboy固件** 对应的是PSG1208�
 
 <http://iytc.net/k2p.php>
 
+双核四线程，使用`cat /proc/cpuinfo`确认。
+
 
 ## 已有固件
 
@@ -109,6 +111,10 @@ K1是PSG1208，K2是PSG1218。所以 **华硕hiboy固件** 对应的是PSG1208�
 [华硕hiboy固件——wifidog本地认证教程](http://www.right.com.cn/forum/thread-204701-1-1.html)
 
 <https://github.com/openwrt-dev/pandorabox>
+
+[荒野无灯](http://p4davan.80x86.io/)
+
+据<http://www.acwifi.net/3173.html>,老毛子Padavan固件的NAT性能比官方的500M快，能到943M。K2P银色版建议尝试荒野无灯版的Padavan固件。
 
 ### LEDE
 
