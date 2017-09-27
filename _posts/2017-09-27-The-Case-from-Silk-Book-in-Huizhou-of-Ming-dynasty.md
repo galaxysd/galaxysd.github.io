@@ -1413,7 +1413,7 @@ Galaxy 只好去搜学术界的英译，毕竟马亲王附了四篇参考文献�
 
 （附截图一张，足见程任卿所提供的信息，差不多可以当电影脚本来用了。）
 
-!(http://ww4.sinaimg.cn/large/561ee475jw1f7mlfx7w3kj20l007maeg.jpg)[/assets/images/2017/MingSnap.jpg]
+![/assets/images/2017/MingSnap.jpg](http://ww4.sinaimg.cn/large/561ee475jw1f7mlfx7w3kj20l007maeg.jpg)
 
 程任卿的这个斩监候，一候，就候了二十年。后来他有个做官的同乡叫余懋学，上书给他喊冤，最终得以改回充军，并被发遣到边疆。程任卿这人也真有能耐，戍边期间居然还立了大功，当上了把总，最终荣归故里。
 
