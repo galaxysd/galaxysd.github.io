@@ -36,7 +36,7 @@ MSByte 则是具有最大权重的字节。
 Galaxy 还看到 John M. Dlugosz 在2003年折腾 [ZIP2 格式](http://www.dlugosz.com/ZIP2/structure.html)时做的`sintV`[方案](http://www.dlugosz.com/ZIP2/VLI.html)。
 我摘录在[文章末尾](#dlugosz-variable-length-integer-encoding--revision-2)，作为借鉴。
 
-其实，他这种把标记位放在开头的方法，对高级语言来说确实是方便些，不用来回`seek`。但 C 里面`seek`其实挺方便的。
+其实，他这种把标记位放在开头的方法，对人类来说确实是理解起来方便些。如果串中每个数的数量级接近，也便于观察的它们的分隔。
 
 然后，Galaxy 也查了下压缩。wiki上有[Universal code (data compression)](https://en.wikipedia.org/wiki/Universal_code_%28data_compression%29)，arXiv上找到了[Daniel Lemire](https://arxiv.org/find/cs/1/au:+Lemire_D/0/1/0/all/0/1)的算法文献：
 
@@ -170,3 +170,147 @@ Example numbers are written with a leading +/- to indicate signed values, and wi
 |(+) 10,000|a7 10|10 {14 bits}||
 |(+) 16,384|c0 40 00|110 {21 bits}|Smallest unsigned number that needs 3 bytes|
 |(+) 2,000,000|de 84 80|110 {21 bits}||
+
+------
+
+额，Galaxy 本来是说接着把 [BAMv1](https://samtools.github.io/hts-specs/SAMv1.pdf) 的文件格式改下来用 `LEB128` 代替 那堆 `int32_t`。结果，在[官网](https://github.com/samtools/hts-specs)翻到了李恒已经做了[`CRAMv3`](http://www.ebi.ac.uk/ena/software/cram-toolkit)，其中包括了与 Dlugosz 的类似的用`ITF-8 integer (itf8)`来实现变长的`int32_t`，用`[LTF-8 long (ltf8)]`来实现变长的`int64_t`。
+
+由于只针对`int32_t`或`int64_t`，字节对齐后无论`5`还是`9`都注定多出一个字节，李恒就简单粗暴地用第一个字节中，二进制低位的`1`的数量来表示后面有几个字节是连续的。
+这种方法没有自带校验，错一个后面就会全乱。而 `LEB128` 可以保证错误只影响当前整数，后面的仍能识别。
+当然，Dlugosz 的方法也缺乏校验，但好歹能支持任意长度(< 255x8=2040 bits)的整数呀。
+
+好吧，CRAM 的每条记录都带 CRC32。反正错了一个数字整条记录就可以重来。
+
+Galaxy 还是觉得，既然都是在用 C 或者 Java 写了，直接用 LEB128 有啥不好的。反正读文件也是一次解压一块，7 bit 与 8 bit 有啥区别？
+
+GCC的[代码](https://github.com/gcc-mirror/gcc/blob/master/include/leb128.h):
+
+````C
+byte = *p++;
+result |= ((uint64_t) (byte & 0x7f)) << shift;
+if ((byte & 0x80) == 0) break;
+shift += 7;
+````
+
+CRAM的[代码](https://github.com/samtools/htslib/blob/367f603069b95e5bfd9570ca2773ff716c73093c/cram/cram_io.c#L364):
+
+````C
+/* LEGACY: consider using ltf8_decode_crc. */
+
+int ltf8_decode_crc(cram_fd *fd, int64_t *val_p, uint32_t *crc) {
+	unsigned char c[9];
+	int64_t val = (unsigned char)hgetc(fd->fp);
+	if (val == -1)
+	return -1;
+
+	c[0] = val;
+
+	if (val < 0x80) {
+		*val_p =   val;
+		*crc = crc32(*crc, c, 1);
+		return 1;
+
+	} else if (val < 0xc0) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		*val_p = val & (((1LL<<(6+8)))-1);
+		*crc = crc32(*crc, c, 2);
+		return 2;
+
+	} else if (val < 0xe0) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(5+2*8))-1);
+		*crc = crc32(*crc, c, 3);
+		return 3;
+
+	} else if (val < 0xf0) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(4+3*8))-1);
+		*crc = crc32(*crc, c, 4);
+		return 4;
+
+	} else if (val < 0xf8) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		val = (val<<8) | (c[4]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(3+4*8))-1);
+		*crc = crc32(*crc, c, 5);
+		return 5;
+
+	} else if (val < 0xfc) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		val = (val<<8) | (c[4]=hgetc(fd->fp));;
+		val = (val<<8) | (c[5]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(2+5*8))-1);
+		*crc = crc32(*crc, c, 6);
+		return 6;
+
+	} else if (val < 0xfe) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		val = (val<<8) | (c[4]=hgetc(fd->fp));;
+		val = (val<<8) | (c[5]=hgetc(fd->fp));;
+		val = (val<<8) | (c[6]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(1+6*8))-1);
+		*crc = crc32(*crc, c, 7);
+		return 7;
+
+	} else if (val < 0xff) {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		val = (val<<8) | (c[4]=hgetc(fd->fp));;
+		val = (val<<8) | (c[5]=hgetc(fd->fp));;
+		val = (val<<8) | (c[6]=hgetc(fd->fp));;
+		val = (val<<8) | (c[7]=hgetc(fd->fp));;
+		*val_p = val & ((1LL<<(7*8))-1);
+		*crc = crc32(*crc, c, 8);
+		return 8;
+
+	} else {
+		val = (val<<8) | (c[1]=hgetc(fd->fp));;
+		val = (val<<8) | (c[2]=hgetc(fd->fp));;
+		val = (val<<8) | (c[3]=hgetc(fd->fp));;
+		val = (val<<8) | (c[4]=hgetc(fd->fp));;
+		val = (val<<8) | (c[5]=hgetc(fd->fp));;
+		val = (val<<8) | (c[6]=hgetc(fd->fp));;
+		val = (val<<8) | (c[7]=hgetc(fd->fp));;
+		val = (val<<8) | (c[8]=hgetc(fd->fp));;
+		*crc = crc32(*crc, c, 9);
+		*val_p = val;
+	}
+
+	return 9;
+}
+````
+
+隔壁 [cram_io.h](https://github.com/samtools/htslib/blob/7fd21f5bfd2767dbc7190bd6ccdef3d57dd30ccd/cram/cram_io.h#L128) 中的编码也是这样的 `switch` 狂魔：
+
+````C
+/* 64-bit itf8 variant */
+static inline int ltf8_put(char *cp, int64_t val) {
+	unsigned char *up = (unsigned char *)cp;
+	if        (!(val & ~((1LL<<7)-1))) {
+		*up = val;
+		return 1;
+	} else if (!(val & ~((1LL<<(6+8))-1))) {
+		*up++ = (val >> 8 ) | 0x80;
+		*up   = val & 0xff;
+		return 2;
+	} else if (!(val & ~((1LL<<(5+2*8))-1))) {
+		*up++ = (val >> 16) | 0xc0;
+		*up++ = (val >> 8 ) & 0xff;
+		*up   = val & 0xff;
+		return 3;
+````
+
+这都什么鬼代码。比起 Kent 的差远了！
+
+哼，这次 Galaxy 才不会当李恒的脑残粉呢！
+（虽然他的 BWA 确实用起来不错。
