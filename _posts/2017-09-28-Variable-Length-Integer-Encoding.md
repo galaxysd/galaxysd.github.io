@@ -173,11 +173,11 @@ Example numbers are written with a leading +/- to indicate signed values, and wi
 
 ------
 
-额，Galaxy 本来是说接着把 [BAMv1](https://samtools.github.io/hts-specs/SAMv1.pdf) 的文件格式改下来用 `LEB128` 代替 那堆 `int32_t`。结果，在[官网](https://github.com/samtools/hts-specs)翻到了李恒已经做了[`CRAMv3`](http://www.ebi.ac.uk/ena/software/cram-toolkit)，其中包括了与 Dlugosz 的类似的用`ITF-8 integer (itf8)`来实现变长的`int32_t`，用`[LTF-8 long (ltf8)]`来实现变长的`int64_t`。
+额，Galaxy 本来是说接着把 [BAMv1](https://samtools.github.io/hts-specs/SAMv1.pdf) 的文件格式改下来用 `LEB128` 代替 那堆 `int32_t`。结果，在[官网](https://github.com/samtools/hts-specs)翻到了李恒已经做了[`CRAMv3`](http://www.ebi.ac.uk/ena/software/cram-toolkit)，其中包括了与 Dlugosz 的类似的用`ITF-8 integer (itf8)`来实现变长的`int32_t`，用`LTF-8 long (ltf8)`来实现变长的`int64_t`。
 
 由于只针对`int32_t`或`int64_t`，字节对齐后无论`5`还是`9`都注定多出一个字节，李恒就简单粗暴地用第一个字节中，二进制低位的`1`的数量来表示后面有几个字节是连续的。
 这种方法没有自带校验，错一个后面就会全乱。而 `LEB128` 可以保证错误只影响当前整数，后面的仍能识别。
-当然，Dlugosz 的方法也缺乏校验，但好歹能支持任意长度(< 255x8=2040 bits)的整数呀。
+当然，Dlugosz 的方法也缺乏校验，但好歹能支持任意长度(<= 255x8=2040 bits)的整数呀。
 
 好吧，CRAM 的每条记录都带 CRC32。反正错了一个数字整条记录就可以重来。
 
