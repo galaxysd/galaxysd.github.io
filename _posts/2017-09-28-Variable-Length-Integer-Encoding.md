@@ -15,7 +15,7 @@ tags: [Algorithm]
 
 （话说，正式的说法是：小端序（英：little-endian）或称小尾序。大端序（英：big-endian）或称大尾序。
 
-以 `Signed LEB128` [为例](https://en.wikipedia.org/wiki/LEB128#Signed_LEB128)，-624485 (0xFFF6789B) is encoded as 0x9B 0xF1 0x59. The lower bits of the two's complement of it is 0110_01111000_10011011; to ensure the MSB of 1, padding one 1 to 21 bit is enough; and encoding 1011001_1110001_0011011 is 0x9B(10011011) 0xF1(11110001) 0x59 (01011001):
+以 `Signed LEB128` [为例](https://en.wikipedia.org/wiki/LEB128#Signed_LEB128)，-624485 (0xFFF6789B) is encoded as 0x9B 0xF1 0x59. The lower bits of the two's complement of it is 0110_01111000_10011011; to ensure the MSB of 1, padding one 1 to 21 bit is enough (这里应该是在说符号位); and encoding 1011001_1110001_0011011 is 0x9B(10011011) 0xF1(11110001) 0x59 (01011001):
 
 ````
 MSB ------------------ LSB 
@@ -34,7 +34,7 @@ MSByte 则是具有最大权重的字节。
 ------
 
 Galaxy 还看到 John M. Dlugosz 在2003年折腾 [ZIP2 格式](http://www.dlugosz.com/ZIP2/structure.html)时做的`sintV`[方案](http://www.dlugosz.com/ZIP2/VLI.html)。
-我摘录在文章末尾，作为借鉴。
+我摘录在[文章末尾](#dlugosz-variable-length-integer-encoding--revision-2)，作为借鉴。
 
 其实，他这种把标记位放在开头的方法，对高级语言来说确实是方便些，不用来回`seek`。但 C 里面`seek`其实挺方便的。
 
