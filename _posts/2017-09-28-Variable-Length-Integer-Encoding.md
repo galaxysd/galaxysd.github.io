@@ -8,7 +8,7 @@ tags: [Algorithm]
 
 今天在推上[提到](https://twitter.com/galaxy001/status/913274598073950209)整数的变长编码，事后正式搜了堆，是以整理。
 
-首先，目前 GCC 能直接处理的整数最大是[128位](https://stackoverflow.com/questions/11656241/how-to-print-uint128-t-number-using-gcc/11660651#11660651)的[`__int128`](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html)，更多位数的需要自己用数组实现。
+首先，目前 GCC 能直接处理的整数最大是[128位](https://stackoverflow.com/questions/11656241/how-to-print-uint128-t-number-using-gcc/11660651#11660651)的[`__int128`](https://gcc.gnu.org/onlinedocs/gcc/_005f_005fint128.html)，更多位数的需要自己用数组实现。所以，这里的整数以 128位（16字节）为上限。
 
 现成的标准是小头的 [LEB128](https://en.wikipedia.org/wiki/LEB128) (Little Endian Base 128)，出自[DWARF](https://en.wikipedia.org/wiki/DWARF)这个调试数据的文件格式。
 以及大头的 [VLQ](https://en.wikipedia.org/wiki/Variable-length_quantity) (variable-length quantity)，比如谷歌的 Protocol Buffers 中的 [Base 128 Varints](https://developers.google.com/protocol-buffers/docs/encoding#varints)，`varints`。
