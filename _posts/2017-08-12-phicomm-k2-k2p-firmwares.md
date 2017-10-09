@@ -4,7 +4,7 @@ slug: "2017-08-12-phicomm-k2-k2p-firmwares"
 title: PHICOMM(斐讯)K2/K2P固件与刷机
 description: 
 category: Linux, OpenWRT
-tags: Galaxy, Tips
+tags: [Galaxy, Tips, Draft]
 ---
 
 ## OpenWrt

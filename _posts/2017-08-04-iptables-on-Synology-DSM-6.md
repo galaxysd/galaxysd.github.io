@@ -4,7 +4,7 @@ slug: "2017-08-04-iptables-on-Synology-DSM-6"
 title: Configure NAT/MASQUERADE on Synology DiskStation Manager 6
 description: 
 category: Linux
-tags: Galaxy, Tips
+tags: [Galaxy, Tips, Draft]
 ---
 
 Since [DSM 6](https://www.synology.com/en-us/dsm/6.1), there is no longer `/usr/syno/etc.defaults/rc.d/S01iptables.sh` as mentioned in [2013](https://forum.synology.com/enu/viewtopic.php?f=39&t=62014) and [2014](https://forum.synology.com/enu/viewtopic.php?f=3&t=70083). The later thread mentioned the message, `insmod: ERROR: could not insert module /lib/modules/nf_nat.ko: Unknown symbol in module`, but till [2017](https://forum.synology.com/enu/viewtopic.php?f=3&t=70083&start=30#p490276), no one solve this problem.

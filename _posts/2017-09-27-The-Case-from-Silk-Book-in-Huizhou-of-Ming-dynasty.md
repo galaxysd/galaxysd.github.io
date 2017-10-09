@@ -4,7 +4,7 @@ slug: "2017-09-27-The-Case-from-Silk-Book-in-Huizhou-of-Ming-dynasty"
 title: 明《丝绢全书》中的徽州府丝绢分担纠纷案件
 description: 
 category: History
-tags: Galaxy
+tags: [Galaxy, Draft]
 ---
 
 ## 绪
