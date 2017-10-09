@@ -11,7 +11,7 @@ See
 <https://twitter.com/painter701/status/794594356724375552> for
 <http://forum.ru-board.com/topic.cgi?forum=35&topic=52322&start=4440#3>.
 
-For Virus concern, view the [virustotal report](https://www.virustotal.com/it/file/4dd85ec25794922b6a423abe7811f49350ca4f070ceec492f986370882cb179b/analysis/1479720993/) nad DIY.
+For Virus concern, view the [virustotal report](https://www.virustotal.com/it/file/4dd85ec25794922b6a423abe7811f49350ca4f070ceec492f986370882cb179b/analysis/1479720993/) and DIY.
 
 ## Files
 
