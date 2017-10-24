@@ -166,8 +166,14 @@ function Push
         local year="$(basename "${committed_post}" | awk -F '-' '{print $1}')"
         local month="$(basename "${committed_post}" | awk -F '-' '{print $2}')"
         local day="$(basename "${committed_post}" | awk -F '-' '{print $3}')"
-        local post_slug="$(basename "${committed_post}" | sed 's/^[0-9]\+-[0-9]\+-[0-9]\+-//' | sed 's/\.[a-zA-Z]\+$//')"
-        local post_url="${site}/${year}/${month}/${day}/${post_slug}"
+# post_slug to also support BSD sed
+        # local post_slug="$(basename "${committed_post}" | sed 's/^[0-9]\+-[0-9]\+-[0-9]\+-//' | sed 's/\.[a-zA-Z]\+$//')"
+        local post_slug="$(basename "${committed_post}"|sed -E 's/^[0-9]+-[0-9]+-[0-9]+-//'|sed -E 's/\.[a-zA-Z]+$//')"
+# Add categories
+        local post_categories="$(grep '^category:' "${committed_post}"|sed -E 's/^category: *//'|tr '[:upper:]' '[:lower:]')"
+# permalink: /:categories/:year:month:day/:title
+        # local post_url="${site}/${year}/${month}/${day}/${post_slug}"
+        local post_url="${site}/${post_categories}/${year}${month}${day}/${post_slug}"
 
         if ! $(IssueExists "${repo_owner}" "${repo_name}" "${post_title}"); then
           if $(CreateIssue "${repo_owner}" "${repo_name}" "${post_title}" "${post_url}" "${label_name}"); then
