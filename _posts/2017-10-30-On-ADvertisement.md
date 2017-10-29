@@ -13,8 +13,8 @@ tags: []
 
 ### 首先是推特上这则美工设计的招聘广告，纯文字版的
 
-> WE NEED A 
-> GRAPHIC 
+> WE NEED A  
+> GRAPHIC  
 > DESIGNER.
 > 
 > Obviously.
@@ -27,7 +27,10 @@ tags: []
 但，下面有回复：*Strong alignment, bold but simple, easy to read, relates the core message quickly... I think they’re all set tbh.*。
 
 当然，也有修改文字的：*This is probably the best way they could advertise it. "If you can design better than this then apply"*。  
-有对`Arial`字体有意见的：*At least they didn’t use helvetica or times. lol*，*They'd have used Arial. Most off-the-shelf PCs don't have Helvetica*，*Most people aren't that self-aware. “Here's something I made in Microsoft Publisher”*，*It would have been better if it was in comic sans.*。
+有对`Arial`字体有意见的：*At least they didn’t use helvetica or times. lol*，  
+*They'd have used Arial. Most off-the-shelf PCs don't have Helvetica*，  
+*Most people aren't that self-aware. “Here's something I made in Microsoft Publisher”*，  
+*It would have been better if it was in comic sans.*。
 
 ### 然后就是B站上[NEW GAME!! : 第6话 好厉害啊](http://bangumi.bilibili.com/anime/6330/play#113273)中关于新游戏*PECO*的*主视觉图*(*Main Vision*)的讨论
 
@@ -84,10 +87,10 @@ tags: []
 ## 正文
 
 结合青叶的图稿：
-![](assets/images/2017/MainVision1.jpg)
+![](/assets/images/2017/MainVision1.jpg)
 
 八神的图稿：
-![](assets/images/2017/MainVision2.jpg)
+![](/assets/images/2017/MainVision2.jpg)
 
 我们可以看到，广告的重点在于：**视觉吸引**，**快速传达必要信息**这两点。
 
@@ -101,13 +104,13 @@ Galaxy困了，也没想好其他搭配的论证的语言。
 ## One More Thing
 
 大家对成品图有兴趣吧，
-![](assets/images/2017/MainVision3.jpg)。
+![](/assets/images/2017/MainVision3.jpg)。
 
 采用八神图案的杂志封底：
-![](assets/images/2017/MainVision4.jpg)。
+![](/assets/images/2017/MainVision4.jpg)。
 
 以及青叶卡位上贴的成品图：
-![](assets/images/2017/MainVision5.jpg)。
+![](/assets/images/2017/MainVision5.jpg)。
 
 ---
 
