@@ -1,7 +1,7 @@
 ---
 layout: post
 title: LEDE的单线多拨
-category: Story
+category: Linux
 status: publish
 tags: []
 ---
