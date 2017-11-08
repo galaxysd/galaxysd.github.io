@@ -47,11 +47,13 @@ ifconfig veth1 up
 
 ### VWAN
 
-在luci界面下，创建新Interfaces(luci/admin/network/network)*VWAM1*，记得物理界面选刚才新建的*veth1*。基本协议当然是PPPoE，然后，广东移动的账号带上后缀`@139.gd`似乎会比不带后缀的好拨通。
+在luci界面下，创建新Interfaces(/luci/admin/network/network)*VWAM1*，记得物理界面选刚才新建的*veth1*。基本协议当然是PPPoE，然后，广东移动的账号带上后缀`@139.gd`似乎会比不带后缀的好拨通。
 注意高级设置中的*Use gateway metric*得设得每个WAN都不一样。分别设成`1`与`2`就好了。
-确定后回*Overview*看能否拨号成功。如果成功了，那么恭喜，否则，说明当前运营商线路不支持多拨，也就没有必要继续往下看了。
+确定后回*Overview*看能否拨号成功。
 
-实在想尝试并发多拨的，可以去[明月永在](https://www.myopenwrt.org/archives/651)那看他的基于*nwan*和*pppoeup*的(并发)多拨设置。
+> 如果成功了，那么恭喜，否则，说明当前运营商线路不支持多拨，也就没有必要继续往下看了。
+
+实在想尝试并发多拨的，可以去[明月永在](https://www.myopenwrt.org/archives/651)那看他的基于*nwan*或*pppoeup*的(并发)多拨设置。
 
 ### 负载均衡
 
@@ -106,12 +108,12 @@ ifconfig veth1 up
 
 至于你在*Firewall - Zone Settings*那边，是单独给个新`Zone`，还是借用`lan`，都行。
 
-有个没文档的点，如果你的配置文件中写`secret: generate`，那么，`zerotier.init`就会生成新的*secret*。而默认配置文件就是这样。
+有个没文档的点，如果你的配置文件中写`option secret 'generate'`，那么，`zerotier.init`就会生成新的*secret*。而默认配置文件就是这样。
 所以，你可以不用去换掉第一眼见到的*secret*。相关代码在<https://github.com/mwarning/zerotier-openwrt/blob/master/zerotier/files/zerotier.init>。
 
 至于默认配置文件`/etc/config/zerotier`：
 
-````json
+````yaml
 config zerotier sample_config
 	option enabled 1
 	option interface 'wan' # restart ZT when wan status changed
