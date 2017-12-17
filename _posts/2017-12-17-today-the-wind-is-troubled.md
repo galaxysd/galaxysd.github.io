@@ -198,3 +198,5 @@ tags: [ACG]
 以及，配图：
 
 ![https://imgur.com/vIs5Sry](/assets/images/2017/today-the-wind-is-troubled.jpg)
+
+话说，感觉[萌娘百科上的词条"今天的风儿好喧嚣啊"](https://zh.moegirl.org/zh-hans/%E4%BB%8A%E5%A4%A9%E7%9A%84%E9%A3%8E%E5%84%BF%E5%A5%BD%E5%96%A7%E5%9A%A3%E5%95%8A#)没写好的样子。翻译成“*好喧嚣*”根本就不文学嘛！
