@@ -8,6 +8,8 @@ tags: [ACG]
 
 ## a Boy-meets-Girl scenario near a river bank / 男子高校生と文学少女
 
+### 中文版挪到最前面
+
 > 今天的风儿有些喧嚣啊。  
 > 这风儿似有略略欲泣。/这风却略略鸣泣。  
 > 风儿把不祥的东西吹到镇子里去了。  
@@ -16,6 +18,20 @@ tags: [ACG]
 > 喂！不得了了！那边的薯片半价啊！
 
 ——出自《男子高中生的日常》第一集，大约在19分钟左右的时候
+
+然后跑去[豆瓣](https://movie.douban.com/review/7546936/)，扒拉来牵手版的翻译：
+
+> “今天的风也在喧嚣不止啊。”  
+> “但这风又仿佛在低声地哭泣”  
+> “它不是因为悲伤而哽咽，喜悦的时候也会流泪吧。  
+> 走吧，在风停之前。”
+
+额，后面译者的追加也挺文学少女的样子：
+
+> 无声无息的路过我高中时光的你，曾经问过的问题，如今没有人再提起。  
+> 分给我快乐往昔的你，刻在高中世界的你。每当夕阳西下，河边吹着的风，告诉我，散了吧，在风停之前。 
+
+### 日文版
 
 原文参考了「今日は風が騒がしいな」的[Nico百科词条](http://dic.nicovideo.jp/a/%E4%BB%8A%E6%97%A5%E3%81%AF%E9%A2%A8%E3%81%8C%E9%A8%92%E3%81%8C%E3%81%97%E3%81%84%E3%81%AA)，及推特[#今日は風が騒がしいな](https://twitter.com/search?q=%23%E4%BB%8A%E6%97%A5%E3%81%AF%E9%A2%A8%E3%81%8C%E9%A8%92%E3%81%8C%E3%81%97%E3%81%84%E3%81%AA)词条下看到的[推文](https://twitter.com/chanalum/status/822612263706263554)，毕竟Galaxy的日语还没那么好……
 
@@ -36,6 +52,8 @@ tags: [ACG]
 > それは悲しくて泣(な)いているんじゃない。 嬉(うれ)しい時だって泣くだろう?  
 > えっ  
 > 急ごう、風が止む前に
+
+### 英文版
 
 [英文翻译](https://watashiwabucho.wordpress.com/2012/12/15/12-days-of-christmas-both-i-and-literature-girl-are-actually-really-lame/#more-1829)，及其[搜索出处](http://dailylivesofhighschoolboys.wikia.com/wiki/Hidenori_Tabata)。额，这些是六级单词么？Galaxy怎么认不全呢？
 
