@@ -57,7 +57,8 @@ The [solution](https://github.com/openwrt/openwrt/issues/7729#issuecomment-10754
 
 ```
 
-Another way to the resize before convert raw disk image to vmdk under Linux.
+Another way to the resize before convert raw disk image to vmdk. 
+As it is easy to [mount raw images under Linux](https://askubuntu.com/questions/483009/mounting-disk-image-in-raw-format).
 ```bash
 qemu-img resize -f raw openwrt2203.vmdk 256M
 sudo losetup -f -P openwrt2203.img
