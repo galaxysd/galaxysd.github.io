@@ -8,12 +8,12 @@ tags: [Galaxy]
 
 The offical guide [OpenWrt on x86 hardware (PC / VM / server)](https://openwrt.org/docs/guide-user/installation/openwrt_x86) is a bit out date. Here are some notes.
 
-The downloads link should be (https://downloads.openwrt.org/), which lists the latest version. 
+The downloads link should be (https://downloads.openwrt.org/), which lists the latest version.  
 The _Upcoming Stable Release_ should be fine, as many Chinese BBS have use v.22 now. 
 And personally, I prefer `nftables` over old `iptables` so that I can skip learning some old fasion things. 
 See [OpenWrt 22.03 release notes](https://openwrt.org/releases/22.03/notes-22.03.0-rc1#firewall4_based_on_nftables).
 
-An example download page link for `/x86/64/` is [22.03.0-rc4](https://downloads.openwrt.org/releases/22.03.0-rc4/targets/x86/64/), 
+An example download page link for `/x86/64/` is [22.03.0-rc4](https://downloads.openwrt.org/releases/22.03.0-rc4/targets/x86/64/),  
 Select _generic-ext4-combined-efi.img.gz_ for a disk image uses a single read-write ext4 partition with no read-only squashfs root filesystem, which allows to enlarge the partition. 
 However, features like Failsafe Mode or Factory Reset won't be available as they need a read-only squashfs partition to function. 
 
@@ -71,7 +71,7 @@ sudo losetup -d $LOOP
 The `fsck.ext4` shows _rootfs: clean, 1444/6656 files, 5072/26624 blocks_, and does not change anything here.  
 Since no other one has mount it, the filesystem should be clean.
 
-The `resize2fs` shows _The filesystem is already 26624 (4k) blocks long.  Nothing to do!_. 
+The `resize2fs` shows _The filesystem is already 26624 (4k) blocks long.  Nothing to do!_.  
 However, it acrually write to the partition and change the image file hash value. 
 For resized `openwrt2203.img`, SHA1 hash changes from _53eeb2cd54ba2f174429d99c298e4db1b4cf9ed1_ to a new value.
 
