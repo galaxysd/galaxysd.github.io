@@ -61,9 +61,9 @@ Another way to the resize before convert raw disk image to vmdk.
 As it is easy to [mount raw images under Linux](https://askubuntu.com/questions/483009/mounting-disk-image-in-raw-format).
 ```bash
 qemu-img resize -f raw openwrt2203.vmdk 256M
-sudo losetup -f -P openwrt2203.img
+LOOP="$(losetup -f)"
+sudo losetup -P ${LOOP} openwrt2203.img
 losetup -l
-LOOP="$(losetup -ln|cut -d' ' -f1)"
 sudo fsck.ext4 -y ${LOOP}p2
 sudo resize2fs ${LOOP}p2
 sudo losetup -d $LOOP
